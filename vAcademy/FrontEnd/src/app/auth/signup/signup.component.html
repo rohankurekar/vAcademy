@@ -1,0 +1,74 @@
+<div class="container" style="padding-bottom: 120px; padding-top: 20px;">
+	<div class="row">
+		<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+			
+			<form (ngSubmit)="handleSignup(f)" #f="ngForm">
+				<div class="form-group"> 
+					<span class="display-4">Sign Up</span>
+				</div>
+				<div class="form-group">
+					<label for="firstname">First Name*</label>
+					<input type="text" id="firstname" class="form-control" ngModel name="firstname" required>
+				</div>
+				<div class="form-group">
+					<label for="lastname">Last Name*</label>
+					<input type="text" id="lastname" class="form-control" ngModel name="lastName" required>
+				</div>
+				<div class="form-group">
+					<label for="email">Email*</label>
+					<input type="email" id="email" class="form-control" ngModel name="email" required email
+						#email="ngModel">
+					<span class="help-block" *ngIf="!email.valid && email.touched">
+						<div class="alert alert-warning" role="alert">
+							Please enter a valid email!
+						</div>
+						
+					</span>
+				</div>
+				<div class="form-group">
+					<label for="mobile">Mobile Number*</label>
+					<input type="number" id="mobile" class="form-control" ngModel name="mobile" required>
+				</div>
+				<div class="form-group">
+					<label for="password">Password*</label>
+					<input type="password" id="password" class="form-control" ngModel name="password" required>
+				</div>
+				<div class="form-group">
+					<label for="repassword">Confirm Password*</label>
+					<input type="password" id="repassword" class="form-control" ngModel name="repassword" required #rp='ngModel'>
+					<span class="help-block" *ngIf="f.value.password!=f.value.repassword &&rp.dirty">
+						<div class="alert alert-warning" role="alert">
+							Password does not match
+						</div>
+					</span>
+				</div>
+				<div class="help" *ngIf='f.invalid &&f.dirty'>
+					Please fill all the required* fields
+				</div><br>
+				<div class="alert alert-success" *ngIf="singupStatus=='SUCCESS'" style="margin-top: 10px;">
+					<p>Successfully Signed up!! Please Login 
+						<a routerLink="/login">here</a>
+					</p>
+				</div>
+				<button class="btn btn-success" type="submit"
+				[disabled]="f.invalid || f.value.password!=f.value.repassword">
+					Submit
+				</button>
+			
+			</form>
+			
+			<div class="alert alert-danger" *ngIf="error" style="margin-top: 10px;">
+				<p>{{ error }}</p>
+			</div>
+
+			<div *ngIf="isLoading" style="text-align: center; margin-top: 10px;">
+				<app-loading-spinner></app-loading-spinner>
+			</div>
+
+			<div class="alert alert-danger" *ngIf="error" style="margin-top: 10px;">
+				<p>{{ error }}</p>
+			</div>	
+
+		</div>
+	</div>
+</div>

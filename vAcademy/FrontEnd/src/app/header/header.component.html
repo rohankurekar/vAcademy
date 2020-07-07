@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" routerLink='/'>V - Academy</a>
+	<!-- Hamburger Button -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+		aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+		<!-- All lists after this will be aligned right (Because mr-auto) -->
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item" routerLinkActive="active">
+				<a class="nav-link" routerLink="/courses">Courses</a>
+			</li> 
+			<li>
+				<a class="nav-link" routerLink="/ranklist">Ranklist</a>
+			</li>
+ 
+		</ul>
+		<div *ngIf="this.authenticationServie.isLoggedIn()">
+			<ul class="navbar-nav">
+				<li class="nav-item dropdown" style="margin-right: 40px;">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{this.userInfo.getFirstName()}}
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" routerLink='/profile'>Profile</a>
+						<a class="dropdown-item" routerLink='/courses/my'>My Courses</a>
+						<a class="dropdown-item" href="#">Tests</a>
+						<a class="dropdown-item" style="cursor: pointer;" (click)=onLogOut()>Log Out</a>
+					</div>
+				</li>
+			</ul> 
+		</div>
+		<div *ngIf="!this.authenticationServie.isLoggedIn()">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/login">Log In</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/signup">Sign Up</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,73 @@
+/* 
+h1 {
+    color: green;
+    text-align: center;
+  }
+#profileimage{
+  width: 20%;
+  align-self: auto;
+  text-align: center;
+}
+
+.profileim{
+    border: 3px solid rgb(17, 69, 112);
+  }
+.profile{  
+  
+  width: 50%; */
+  /*border: 3px solid rgb(17, 69, 112);*/
+  /* padding: 10px;
+ 
+}
+.table{
+  
+    margin : auto;
+    
+}
+#edit{
+  
+    position: absolute;
+    left : 20%;
+    top :15%;
+    margin: auto;
+    
+    padding: 10px;
+  
+    
+}
+ */
+
+h1 {
+  color: green;
+  text-align: center;
+}
+#profileimage{
+position: relative; 
+text-align: center;
+float: left;
+width: 20%;
+
+
+
+}
+
+.profileim{
+  border: 3px solid rgb(17, 69, 112);
+}
+
+#edit{
+ position: relative;
+ margin-left: 0pt;
+  padding: 10px;
+  padding-left: 10pt;
+float: right;
+
+  text-align: center;
+
+  
+}
+.profile{
+position: fixed;
+text-align: center;
+
+}

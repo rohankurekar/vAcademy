@@ -1,0 +1,46 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h1>Profile</h1>
+<div class="profile">
+	<div id="profileimage">
+		<img src="assets\profilepicture\photo.png" alt="Name" class="profileim">
+
+		<span class="name">{{userData.firstName}}</span>
+
+
+	</div> 
+
+
+	<div id="edit">
+		<table class="table">
+			<tr>
+				<td>First Name </td>
+				<td> : </td>
+				<td>{{userData.firstName}}</td>
+			</tr>
+			<br>
+			<tr>
+				<td>Last Name </td>
+				<td> : </td>
+				<td>{{userData.lastName}}</td>
+			</tr>
+			<br>
+			<tr>
+				<td>Email </td>
+				<td> : </td>
+				<td>{{userData.email}}</td>
+			</tr>
+			<br>
+			<tr>
+				<td>Mobile </td>
+				<td> : </td>
+				<td>{{userData.mobileNumber}}</td>
+			</tr>
+			<br>
+
+		</table>
+		<br>
+		<button class="btn btn-success">Edit</button>
+
+
+	</div>
+</div>

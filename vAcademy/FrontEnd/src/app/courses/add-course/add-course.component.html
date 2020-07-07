@@ -1,0 +1,47 @@
+<form [formGroup]="myForm" style="margin-right: 40%;">
+    Value: {{myForm.value | json}}
+    <div class="form-group" >
+        <label for="coursename">Course Name</label>
+        <input type="text" id="coursename" class="form-control" ngModel name="coursename" formControlName="coursename" required>
+    </div>
+    <div class="form-group" >
+        <label for="description">Description</label>
+        <input type="text" id="description" class="form-control" ngModel name="description" formControlName="description" required>
+    </div>
+    <div class="form-group" >
+        <label for="price">Price</label>
+        <input type="text" id="price" class="form-control" ngModel name="price" formControlName="price" required>
+    </div>
+    
+    <div formArrayName="lessons">
+        <div *ngFor="let phone of lessonForms.controls; let i=index" [formGroupName]="i" >
+            
+            <div class="form-group">
+                <label for="lessons">Lesson Name</label>
+                
+                <input type="text" id="lessons" class="form-control" ngModel name="lessons" formControlName="lesson"   required>
+                
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image URL</label>
+                
+                <input type="text" id="image" class="form-control" ngModel name="image" formControlName="image"   required>
+                
+            </div>
+
+            <div class="form-group">
+                <label for="video">Video URL</label>
+                
+                <input type="text" id="video" class="form-control" ngModel name="video" formControlName="video"   required>
+                
+            </div>
+             <button class="btn btn-primary" (click)=deleteLesson(i) style="margin-bottom: 10px; float: right;">DELETE LESSON</button>
+            
+        </div>
+    </div>
+
+    <button class="btn btn-primary" (click)="addLesson()">ADD LESSON</button>
+    <br>
+    <button class="btn btn-primary"  style="margin-top: 10px" (click)=onSubmit()>SUBMIT</button>
+</form>

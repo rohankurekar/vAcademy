@@ -1,0 +1,11 @@
+<div style="float: right" *ngIf="isAdmin"> 
+    <button class="btn btn-primary" routerLink="add-course" type="button">ADD Course</button>
+</div>
+<h2>Our Available Courses</h2>
+<app-course
+	*ngFor = "let course of availableCourses; let i = index;" 
+	[course] = course
+	[index] = i
+	></app-course>
+
+<router-outlet></router-outlet>

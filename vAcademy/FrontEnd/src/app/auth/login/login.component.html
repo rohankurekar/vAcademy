@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+           
+            <div *ngIf="isLoading" style="text-align: center;">
+                <app-loading-spinner></app-loading-spinner>
+            </div>
+            <div class="form-group">
+                <span class="display-4">Log In as {{isAdmin ? 'Administrator' : 'Student'}}</span>
+            </div>
+            <div class="row" *ngIf='f.invalid ' class="alert alert-warning">
+                Please fill the required fields
+            </div>
+            <form (ngSubmit)="f.valid && handleLogin(f)" #f="ngForm">
+             
+                
+                <div>
+                    <a (click)="isAdmin=false" style="cursor: pointer; color: brown;" >Student</a> | 
+                    <a (click)="isAdmin=true" style="cursor: pointer; color: teal">Admin</a>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" ngModel name="email" required email
+                        #email="ngModel">
+                    <span class="help-block" *ngIf="!email.valid && email.dirty">Please enter a valid email!</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" ngModel name="password" required>
+                </div>
+                <button class="btn btn-success" type="submit" >{{isAdmin ? 'Administrator' : 'Student'}} Login</button>
+            </form>
+            
+            <div class="alert alert-danger" style="margin-top: 10px;" *ngIf="!isAlreadySignedUp">
+                <p>{{errorLoginFailed}} !  Please <a routerLink="/signup"> Register </a></p>
+            </div>
+        
+        </div>
+    </div>
+</div>
