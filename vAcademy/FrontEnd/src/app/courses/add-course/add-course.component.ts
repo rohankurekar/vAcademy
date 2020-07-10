@@ -1,3 +1,6 @@
+import { User } from './../../auth/user.model';
+import { Router } from '@angular/router';
+
 import { FormBuilder, FormGroup, FormArray} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
@@ -10,14 +13,17 @@ import { Course } from 'src/app/shared/course.model';
 })
 export class AddCourseComponent implements OnInit {
   myForm: FormGroup;
+  user:User;
   constructor(private fb: FormBuilder,
-              private coursesService: CoursesService) { }
+              private coursesService: CoursesService,private router:Router) { }
 
   ngOnInit(): void {
     this.myForm=this.fb.group({
-      coursename:'',
+      name:'',
+      duration:'',
       description:'',
       price:'',
+      imageurl:'',
       lessons: this.fb.array([])
     })
 
@@ -41,14 +47,37 @@ export class AddCourseComponent implements OnInit {
   }
 
   onSubmit(){
-    //console.log(this.myForm);
+    //console.log(this.myForm.value);
+    /*
     const name = this.myForm.value.coursename;
+    const duration = this.myForm.value.duration;
+    const description = this.myForm.value.price;
     const price = this.myForm.value.price;
     const imageUrl = 'https://code.org/shared/images/social-media/codeorg2019_social.png';
-    const duration = '5';
+    
+    
 
     const course = new Course(name,duration,imageUrl,+price);
-    this.coursesService.addAvailableCourse(course);
+    */
+   let userData=JSON.parse(localStorage.getItem('userData'))
+    let userId=userData['id']
+    console.log(userId);
+    this.coursesService.createToTheCourse(userId,this.myForm.value).subscribe(
+      
+        response=>{
+          console.log("added:",response)
+          console.log("created:",this.myForm.value)
+          this.user=userData
+          //this.user.enrolledCourses=response;
+          localStorage.setItem('userData',JSON.stringify(this.user))
+          //console.log(this.user)
+          this.router.navigate(['courses'])
+        },
+        error=>{}
+      
+    )
+    //this.coursesService.addAvailableCourse(this.myForm.value);
     //Update Backend (PUT API)
+    
   }
 }

@@ -65,7 +65,7 @@ export class CoursePayComponent implements OnInit {
     this.coursesService.EnrolleToTheCourse(userId,course).subscribe(
       
         response=>{
-          //console.log("added:",response)
+          console.log("added:",response)
           this.user=userData
           this.user.enrolledCourses=response;
           localStorage.setItem('userData',JSON.stringify(this.user))

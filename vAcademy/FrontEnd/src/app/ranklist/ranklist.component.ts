@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { User } from './../auth/user.model';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -7,12 +9,15 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./ranklist.component.css']
 })
 export class RanklistComponent implements OnInit {
-
-  constructor(private authenticationService: AuthenticationService) { }
-
+  alluser:User;
+  constructor(private authenticationService: AuthenticationService,private router:Router) { }
+  
   ngOnInit(): void {
     this.authenticationService.getAllUsers().subscribe(response=>{
       console.log(response);
+      this.alluser=response;
+      this.router.navigate(['/ranklist']);
+      
     },
     error=>{
 

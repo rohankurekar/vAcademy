@@ -1,13 +1,24 @@
 <H1>My Courses</H1>
-<br>
-<app-course 
-	*ngFor = "let course of enrolledCourses; let i = index"
-	[index] = i 
-	[course] = course>
-></app-course>
-
-<div *ngIf="enrolledCourses.length == 0">
+<div><!--</div> *ngIf="enrolledCourses.length == 0"-->
 
 	<h2 > Enroll In Some Courses and let the fun begin! 
 	<a style="cursor: pointer;" routerLink="/courses"> Here</a></h2>
 </div>
+<br>
+<app-course 
+	*ngFor = "let course of enrolledCourses; let i = index"
+	[index] = i+1
+	[course] = course>
+></app-course>
+
+<H1>Added  Course</H1>
+
+<br>
+<app-course 
+	*ngFor = "let course of createdCourses; let i = index"
+	[index] = -(i+1)
+
+	[course] = course>
+></app-course>
+
+

@@ -22,7 +22,7 @@ export class CoursesComponent implements OnInit {
       response=>{
         this.availableCourses=response
         this.coursesService.setAvailableCourses(this.availableCourses);
-        //console.log("AllCourses: ",response)
+        console.log("AllCourses: ",response)
       },
       error=>{}
     );

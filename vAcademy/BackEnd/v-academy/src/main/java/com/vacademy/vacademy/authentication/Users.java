@@ -10,10 +10,12 @@ public class Users {
 	private String password;
 	private boolean admin;
 	private List<Courses>enrolledCourses;
+	private List<Courses>createdCourses;
+	
 	
 	public Users() {}
 	public Users(Long id, String firstName, String lastName, String email, String mobileNumber, String password,
-			boolean isAdmin,List<Courses>enrolledCourses) {
+			boolean isAdmin) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -23,6 +25,20 @@ public class Users {
 		this.password = password;
 		this.admin = isAdmin;
 		this.enrolledCourses=enrolledCourses;
+	}
+	
+	public Users(Long id, String firstName, String lastName, String email, String mobileNumber, String password,
+			boolean admin, List<Courses> enrolledCourses, List<Courses> createdCourses) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobileNumber = mobileNumber;
+		this.password = password;
+		this.admin = admin;
+		this.enrolledCourses = enrolledCourses;
+		this.createdCourses = createdCourses;
 	}
 	public Long getId() {
 		return id;
@@ -78,6 +94,12 @@ public class Users {
 		return "Users [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", mobileNumber=" + mobileNumber + ", password=" + password + ", admin=" + admin
 				+ ", enrolledCourses=" + enrolledCourses + "]";
+	}
+	public List<Courses> getCreatedCourses() {
+		return createdCourses;
+	}
+	public void setCreatedCourses(List<Courses> createdCourses) {
+		this.createdCourses = createdCourses;
 	}
 	
 	

@@ -7,7 +7,8 @@ export class User {
 		public mobileNumber:string,
 		public password:string,
 		public admin:boolean,
-		public enrolledCourses
+		public enrolledCourses,
+		public createdCourses
 		//private _token: string,
 		//private _tokenExpirationData: Date
 	) {} 

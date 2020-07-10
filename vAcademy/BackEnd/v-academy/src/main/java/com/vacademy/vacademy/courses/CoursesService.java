@@ -17,17 +17,22 @@ public class CoursesService {
 	
 	public CoursesService() {}
 	
-	static List<Courses> allCourses;
-	static Long id=0L;
+	List<Courses> allCourses;
+	
+	public void setAllCourses(List<Courses> allCourses) {
+		this.allCourses = allCourses;
+	}
+
+	/*static Long id=0L;
 	static 
 	{
 		allCourses=new ArrayList<Courses>();
 		String imageUrl="https://code.org/shared/images/social-media/codeorg2019_social.png";
-		allCourses.add(new Courses("Math","5",imageUrl,100L));
-		allCourses.add(new Courses("FPL","5",imageUrl,100L));
-		allCourses.add(new Courses("Web Technology","5",imageUrl,100L));
-		allCourses.add(new Courses("Java in 20 days","5",imageUrl,100L));
-	}
+		//allCourses.add(new Courses("Math","5",imageUrl,100L));
+		//allCourses.add(new Courses("FPL","5",imageUrl,100L));
+		//allCourses.add(new Courses("Web Technology","5",imageUrl,100L));
+		//allCourses.add(new Courses("Java in 20 days","5",imageUrl,100L));
+	}*/
 	
 	@Autowired
 	static AuthenticationServices authenticationService;

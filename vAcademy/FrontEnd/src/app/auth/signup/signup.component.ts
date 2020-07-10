@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
   }
   handleSignup(form: NgForm){
 
-    this.userData=new User(-1,"","","","","",false,[])
+    this.userData=new User(-1,"","","","","",false,[],[])
     this.isLoading = true;
     this.userData.firstName = form.value.firstname;
     this.userData.lastName = form.value.lastName;

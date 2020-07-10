@@ -27,7 +27,7 @@ export class CoursesService {
 		this.availableCourses = availableCourses;
 	}
 
-	fetchEnrolledCourses(){
+	/*fetchEnrolledCourses(){
 		//return this.http.get<Course>(`http://localhost:8080/courses/allcourses`);
 		this.enrolledCourses = [
 			{
@@ -43,30 +43,36 @@ export class CoursesService {
 				price: 700
 			  }
 		]
-	}
+	}*/
 
 	getAvailableCourse(index: number){
 		return this.availableCourses[index];
 	}
 
-	getEnrolledCourses(){
-		return this.enrolledCourses;
+	getEnrolledCourses(userId){
+		return this.http.get<Course>(`http://localhost:8080/courses/enrolledco/${userId}`);
+	}
+	getCreatedCourses(userId){
+		return this.http.get(`http://localhost:8080/courses/createdco/${userId}`);
+		
 	}
 
-	getEnrolledCourse(index: number){
-		return this.enrolledCourses[index];
-	}
 
 	addAvailableCourse(course: Course){
 		this.availableCourses.push(course);
 		//Create API
 		//Server Push 
+		
 	}
 
 	//Saving the enrolled course to db
 	EnrolleToTheCourse(userId,course:Course)
 	{
 		return this.http.put(`http://localhost:8080/courses/enroll/tocourse/${userId}`,course)
+	}
+	createToTheCourse(userId,course:Course)
+	{
+		return this.http.put(`http://localhost:8080/courses/create/tocourse/${userId}`,course)
 	}
 
 }

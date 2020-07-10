@@ -37,15 +37,16 @@ export class LoginComponent implements OnInit {
     //console.log('login')
     //console.log('localsotage: ',localStorage.getItem('userData'))
     this.isLoading = true;
-
+   
     if (this.isAdmin) 
     {
       console.log('Admin');
-      this.isLoading = false;
+      /*this.isLoading = false;
       //this.error = 'Admin Component is under construction!';
       this.authenticationService.logout();
       this.authenticationService.setAdmin();
-      this.router.navigate(['/courses'])
+      this.router.navigate(['/courses']); */
+      this.handleStudentLogin(form.value.email, form.value.password,false);
     } 
     else 
     {
@@ -64,7 +65,7 @@ export class LoginComponent implements OnInit {
         this.userData=response
         console.log("UserData: ",this.userData)
         //Fetch Enrolled Courses
-        this.coursesService.fetchEnrolledCourses();
+        //this.coursesService.fetchEnrolledCourses();
         //Save data in localstorage for further use
         localStorage.setItem('userData',JSON.stringify(this.userData)) 
         this.router.navigate(['/courses']);

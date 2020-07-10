@@ -1,1 +1,17 @@
 <p>ranklist works!</p>
+<!-- Value: {{alluser | json}} -->
+
+<div *ngFor="let user of alluser; let i=index"  >
+    
+
+    <div class="rank{{i}}">
+        <br>
+        <div style="text-align: center;">
+            {{user.firstName}} {{user.lastName}}
+        </div>
+        <br>
+        
+      </div>
+      <br>
+
+</div>

@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     if(this.authenticationService.isLoggedIn()){
-      this.coursesService.fetchEnrolledCourses();
+      //this.coursesService.fetchEnrolledCourses();
     }
     this.authService.autoLogin();
   }

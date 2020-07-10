@@ -9,7 +9,7 @@ import com.vacademy.vacademy.dbModels.Courses;
 public class AuthenticationServices {
 	
 	private static List<Users>allUsers;
-	private static List<Courses>enrolledCourses;
+	//private static List<Courses>enrolledCourses;
 	private static Long id=0L;
 	
 	public AuthenticationServices() {}
@@ -17,11 +17,11 @@ public class AuthenticationServices {
 	static
 	{ 
 		allUsers=new ArrayList<Users>();
-		enrolledCourses=new ArrayList<Courses>();
-		String imageUrl="https://code.org/shared/images/social-media/codeorg2019_social.png";
-		allUsers.add(new Users(++id,"Dhanesh","Walte","d@g.com","12345","12345",false,enrolledCourses));
-		allUsers.add(new Users(++id,"Mohit","Gupta","m@g.com","12345","12345",false,enrolledCourses));
-		allUsers.add(new Users(++id,"Rohan","Kurekar","r@g.com","12345","12345",false,enrolledCourses));
+		//enrolledCourses=new ArrayList<Courses>();
+		//String imageUrl="https://code.org/shared/images/social-media/codeorg2019_social.png";
+		allUsers.add(new Users(++id,"Dhanesh","Walte","d@g.com","12345","12345",false));
+		allUsers.add(new Users(++id,"Mohit","Gupta","m@g.com","12345","12345",false));
+		allUsers.add(new Users(++id,"Rohan","Kurekar","r@g.com","12345","12345",false));
 	}
 	
 	public static List<Users> getAllUsers() {
@@ -95,15 +95,63 @@ public class AuthenticationServices {
 	
 	public  List<Courses> enroll(Long id,Courses course)
 	{
-		//System.out.println("IN ENROLL SERVICE "+id+" ");
+		System.out.println("IN ENROLL SERVICE "+id+" ");
 		
 		Users user=findUserById(id);
 		//System.out.println("IN ENROLL SERVICE "+user);
+		/*
 		List<Courses>enrolledCourses=user.getEnrolledCourses();
 		enrolledCourses.add(course);
 		user.setEnrolledCourses(enrolledCourses); 
+		*/
+		
+		List<Courses>enrolledCourses=new LinkedList();
+		if(user.getEnrolledCourses()==null) {
+			enrolledCourses.add(course);
+		}else {
+			enrolledCourses=user.getCreatedCourses();
+			enrolledCourses.add(course);
+		}
+		user.setEnrolledCourses(enrolledCourses);
 		//System.out.println(enrolledCourses);
 		return user.getEnrolledCourses();
+		
+	}
+	public  List<Courses> getcourses(Long id)
+	{
+		System.out.println("IN get "+id+" ");
+		
+		Users user=findUserById(id);
+		System.out.print(user.getEnrolledCourses().toString());
+		return user.getEnrolledCourses();
+		
+	}
+	public  List<Courses> getCreatedcourses(Long id)
+	{
+		System.out.println("IN get created"+id+" ");
+		
+		Users user=findUserById(id);
+		System.out.print(user.getCreatedCourses().toString());
+		return user.getCreatedCourses();
+		
+	}
+	public  List<Courses> create(Long id,Courses course)
+	{
+		System.out.println("IN ENROLL SERVICE "+id+" ");
+		
+		Users user=findUserById(id);
+		//System.out.println("IN ENROLL SERVICE "+user);
+		List<Courses>createdCourses=new LinkedList();
+		if(user.getCreatedCourses()==null) {
+			createdCourses.add(course);
+		}else {
+			createdCourses=user.getCreatedCourses();
+			createdCourses.add(course);
+		}
+		
+		user.setCreatedCourses(createdCourses); 
+		//System.out.println(enrolledCourses);
+		return user.getCreatedCourses();
 		
 	}
 
